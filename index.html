@@ -4,340 +4,242 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Barakah AI — Your AI Real Estate Agent for Hyderabad</title>
-<meta name="description" content="Barakah AI is an AI agent for the real estate market — find properties, calculate EMI, understand documents, get area insights and sell smarter. Built for Hyderabad & Telangana.">
+<meta name="description" content="Barakah AI — chat with Hyderabad's AI real estate agent. Property search, EMI, documents, NRI property care. Telugu, Hindi, English.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
-    --white:#FFFFFF;
-    --royal:#2244CC;        /* royal blue */
-    --royal-deep:#15288A;
-    --navy:#0A1440;
-    --ink:#1B2340;
-    --ink-soft:#5A6285;
-    --blue-050:#F3F6FF;
-    --blue-100:#E4EAFF;
-    --blue-200:#C9D5FF;
-    --line:#E2E7F5;
-    --gold:#F2B33D;
-    --display:'Space Grotesk',system-ui,sans-serif;
-    --body:'Plus Jakarta Sans',system-ui,sans-serif;
+    --white:#FFFFFF; --app-bg:#F6F7FB; --royal:#2244CC; --royal-deep:#15288A; --navy:#0A1440;
+    --ink:#1B2340; --ink-soft:#5A6285; --blue-050:#F3F6FF; --blue-100:#E4EAFF;
+    --blue-200:#C9D5FF; --line:#E4E7F2; --gold:#F2B33D;
+    --display:'Space Grotesk',system-ui,sans-serif; --body:'Plus Jakarta Sans',system-ui,sans-serif;
   }
   *{margin:0;padding:0;box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{
-    font-family:var(--body);color:var(--ink);line-height:1.6;background:var(--white);
-    background-image:
-      radial-gradient(rgba(34,68,204,.10) 1px, transparent 1px),
-      radial-gradient(rgba(34,68,204,.06) 1px, transparent 1px);
-    background-size:28px 28px, 28px 28px;
-    background-position:0 0, 14px 14px;
-  }
-  .wrap{max-width:1100px;margin:0 auto;padding:0 22px}
-  h1,h2,h3{font-family:var(--display);line-height:1.12;letter-spacing:-.01em;color:var(--navy)}
-  .eyebrow{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--royal)}
-  .btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--body);font-weight:700;font-size:14.5px;border-radius:12px;padding:13px 24px;text-decoration:none;cursor:pointer;border:none;transition:transform .15s,box-shadow .15s}
-  .btn:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
-  .btn-royal{background:var(--royal);color:#fff;box-shadow:0 10px 26px rgba(34,68,204,.28)}
-  .nav-links a.btn-royal,.band a.btn-royal{color:#fff}
-  .band a.btn-royal{background:var(--gold);color:var(--navy)}
-  .btn-royal:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(34,68,204,.36)}
-  .btn-line{background:#fff;color:var(--royal);border:1.5px solid var(--blue-200)}
-  .btn-line:hover{border-color:var(--royal)}
+  html,body{height:100%}
+  body{font-family:var(--body);color:var(--ink);background:var(--app-bg);overflow:hidden;font-size:15px}
+  button{font-family:var(--body)}
 
-  /* ---------- Nav ---------- */
-  nav{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-  .nav-in{display:flex;align-items:center;justify-content:space-between;height:68px}
-  .logo{font-family:var(--display);font-weight:700;font-size:22px;color:var(--navy);text-decoration:none;display:flex;align-items:center;gap:9px}
-  .logo .mark{width:32px;height:32px;border-radius:9px;background:linear-gradient(135deg,var(--royal),var(--royal-deep));display:flex;align-items:center;justify-content:center;color:#fff;font-size:16px;font-weight:700}
-  .logo em{font-style:normal;color:var(--royal)}
-  .nav-links{display:flex;gap:26px;align-items:center}
-  .nav-links a{text-decoration:none;font-size:14px;font-weight:600;color:var(--ink-soft)}
-  .nav-links a:hover{color:var(--royal)}
-  .nav-links .btn{padding:10px 18px;font-size:13.5px}
-  @media(max-width:760px){.nav-links a:not(.btn){display:none}}
+  .app{display:flex;height:100vh;height:100dvh;min-width:0}
 
-  /* ---------- Hero ---------- */
-  .hero{padding:58px 0 30px;text-align:center}
-  .hero h1{font-size:clamp(34px,5.4vw,56px);max-width:820px;margin:16px auto 14px}
-  .hero h1 span{color:var(--royal)}
-  .hero p{font-size:17px;color:var(--ink-soft);max-width:600px;margin:0 auto 8px}
-  .lang-line{font-size:13px;font-weight:700;color:var(--royal);margin-top:10px}
+  /* ================= LEFT SIDEBAR ================= */
+  .side{width:262px;flex-shrink:0;background:#fff;border-right:1px solid var(--line);display:flex;flex-direction:column;min-width:0}
+  .side-top{padding:16px 14px 8px}
+  .brand{display:flex;align-items:center;gap:9px;font-family:var(--display);font-weight:700;font-size:18px;color:var(--navy);margin:2px 4px 16px}
+  .brand .mark{width:30px;height:30px;border-radius:8px;background:linear-gradient(135deg,var(--royal),var(--royal-deep));display:flex;align-items:center;justify-content:center;color:#fff;font-size:15px;flex-shrink:0}
+  .brand em{font-style:normal;color:var(--royal)}
+  .newchat{display:flex;align-items:center;gap:8px;width:100%;background:var(--blue-050);border:1.5px solid var(--blue-200);border-radius:12px;padding:11px 14px;font-weight:700;font-size:13.5px;color:var(--royal-deep);cursor:pointer;transition:all .15s}
+  .newchat:hover{border-color:var(--royal);background:var(--blue-100)}
+  .hist{flex:1;overflow-y:auto;padding:6px 8px}
+  .hist::-webkit-scrollbar{width:6px}
+  .hist::-webkit-scrollbar-thumb{background:var(--blue-200);border-radius:6px}
+  .hist .grp{font-size:10.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);padding:14px 10px 6px}
+  .hitem{display:flex;align-items:center;gap:8px;padding:9px 10px;border-radius:10px;font-size:13px;color:var(--ink);cursor:pointer}
+  .hitem span.tt{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1}
+  .hitem:hover{background:var(--blue-050)}
+  .hitem.active{background:var(--blue-100);color:var(--royal-deep);font-weight:700}
+  .hitem .del{color:var(--ink-soft);font-size:14px;display:none;flex-shrink:0;background:none;border:none;cursor:pointer}
+  .hitem:hover .del{display:block}
+  .hitem .del:hover{color:#C0392B}
+  .hist .empty{font-size:12.5px;color:var(--ink-soft);padding:12px 10px;line-height:1.6}
+  .side-bottom{border-top:1px solid var(--line);padding:10px 12px}
+  .side-note{font-size:10.5px;color:var(--ink-soft);padding:6px 8px 2px;line-height:1.5}
+  .side-note a{color:var(--royal);font-weight:700}
 
-  /* ---------- Agent console ---------- */
-  .console{max-width:860px;margin:34px auto 0;background:#fff;border:1px solid var(--line);border-radius:22px;box-shadow:0 30px 80px rgba(10,20,64,.12);overflow:hidden}
-  .console-head{display:flex;align-items:center;gap:11px;padding:15px 20px;border-bottom:1px solid var(--line);background:linear-gradient(180deg,#fff, var(--blue-050))}
-  .orb{width:38px;height:38px;border-radius:50%;background:radial-gradient(circle at 30% 30%, #5B7CFF, var(--royal) 60%, var(--royal-deep));box-shadow:0 0 0 4px var(--blue-100);flex-shrink:0;position:relative}
-  .orb::after{content:"";position:absolute;inset:0;border-radius:50%;box-shadow:0 0 0 0 rgba(34,68,204,.35);animation:pulse 2.6s infinite}
-  @keyframes pulse{to{box-shadow:0 0 0 14px rgba(34,68,204,0)}}
-  .console-head .nm{font-family:var(--display);font-weight:700;font-size:16px;color:var(--navy)}
-  .console-head .st{font-size:12px;color:var(--ink-soft)}
-  .console-head .right{margin-left:auto}
-  .reset-btn{background:none;border:1.5px solid var(--line);border-radius:999px;padding:7px 15px;font-family:var(--body);font-weight:700;font-size:12px;color:var(--ink-soft);cursor:pointer}
-  .reset-btn:hover{border-color:var(--royal);color:var(--royal)}
+  /* ================= MAIN ================= */
+  .main{flex:1;display:flex;flex-direction:column;min-width:0}
+  .topbar{display:flex;align-items:center;gap:10px;padding:12px 20px;border-bottom:1px solid var(--line);background:rgba(255,255,255,.85);backdrop-filter:blur(8px)}
+  .burger{display:none;background:#fff;border:1.5px solid var(--line);border-radius:9px;width:36px;height:36px;font-size:16px;cursor:pointer;color:var(--ink)}
+  .tname{font-family:var(--display);font-weight:700;font-size:15px;color:var(--navy);display:flex;align-items:center;gap:8px;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .dot{width:8px;height:8px;border-radius:50%;background:#22B573;flex-shrink:0}
+  .topbar .actions{margin-left:auto;display:flex;gap:8px;flex-shrink:0}
+  .tbtn{font-weight:700;font-size:12.5px;border-radius:999px;padding:8px 15px;cursor:pointer;border:1.5px solid var(--blue-200);background:#fff;color:var(--royal-deep);text-decoration:none}
+  .tbtn:hover{border-color:var(--royal)}
+  .tbtn.solid{background:var(--royal);color:#fff;border-color:var(--royal)}
+  @media(max-width:640px){.tbtn.hide-m{display:none}}
 
-  .stream{height:440px;overflow-y:auto;padding:22px;display:flex;flex-direction:column;gap:14px;background:
-    linear-gradient(rgba(255,255,255,.97),rgba(255,255,255,.97)),
-    radial-gradient(rgba(34,68,204,.12) 1px, transparent 1px);
-    background-size:auto, 24px 24px}
-  .bubble{max-width:78%;padding:13px 17px;border-radius:16px;font-size:14.5px;line-height:1.6;word-break:break-word}
-  .bubble.user{background:var(--royal);color:#fff;align-self:flex-end;border-bottom-right-radius:5px;box-shadow:0 8px 20px rgba(34,68,204,.22)}
-  .bubble.bot{background:var(--blue-050);border:1px solid var(--blue-100);align-self:flex-start;border-bottom-left-radius:5px;color:var(--ink)}
+  .chatzone{flex:1;overflow-y:auto;display:flex;flex-direction:column}
+  .chatzone::-webkit-scrollbar{width:8px}
+  .chatzone::-webkit-scrollbar-thumb{background:var(--blue-200);border-radius:8px}
+
+  .welcome{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:30px 20px;text-align:center}
+  .welcome .biglogo{display:flex;align-items:center;gap:12px;font-family:var(--display);font-weight:700;font-size:clamp(26px,4vw,38px);color:var(--navy)}
+  .welcome .biglogo .mark{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,var(--royal),var(--royal-deep));display:flex;align-items:center;justify-content:center;color:#fff;font-size:22px}
+  .welcome .biglogo em{font-style:normal;color:var(--royal)}
+  .welcome .tag{font-size:14.5px;color:var(--ink-soft);margin:12px 0 4px;max-width:520px}
+  .welcome .langs{font-size:12.5px;font-weight:700;color:var(--royal);margin-bottom:24px}
+  .chips{max-width:640px;display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+  .chips button{border:1.5px solid var(--blue-200);background:#fff;color:var(--royal-deep);font-weight:700;font-size:12px;border-radius:999px;padding:8px 14px;cursor:pointer;transition:all .15s}
+  .chips button:hover{background:var(--royal);border-color:var(--royal);color:#fff}
+
+  .msgs{max-width:820px;width:100%;margin:0 auto;padding:26px 24px 10px;display:none;flex-direction:column;gap:16px}
+  .bubble{max-width:84%;padding:13px 17px;border-radius:16px;font-size:14.5px;line-height:1.65;word-break:break-word}
+  .bubble.user{background:var(--royal);color:#fff;align-self:flex-end;border-bottom-right-radius:5px;box-shadow:0 8px 20px rgba(34,68,204,.18)}
+  .bubble.bot{background:#fff;border:1px solid var(--line);align-self:flex-start;border-bottom-left-radius:5px;box-shadow:0 3px 14px rgba(10,20,64,.05)}
   .bubble.bot strong{color:var(--navy)}
   .bubble.bot ul{margin:6px 0 6px 18px}
   .bubble.bot li{margin:3px 0}
-  .bubble.sys{background:transparent;align-self:center;color:var(--ink-soft);font-size:12.5px;text-align:center;max-width:92%}
-  .typing{display:flex;gap:5px;align-self:flex-start;background:var(--blue-050);border:1px solid var(--blue-100);padding:14px 18px;border-radius:16px;border-bottom-left-radius:5px}
+  .bubble.sys{background:transparent;align-self:center;color:var(--ink-soft);font-size:12.5px;text-align:center}
+  .typing{display:flex;gap:5px;align-self:flex-start;background:#fff;border:1px solid var(--line);padding:14px 18px;border-radius:16px;border-bottom-left-radius:5px}
   .typing i{width:7px;height:7px;border-radius:50%;background:var(--royal);animation:bl 1.1s infinite}
   .typing i:nth-child(2){animation-delay:.18s}.typing i:nth-child(3){animation-delay:.36s}
   @keyframes bl{0%,60%,100%{opacity:.25;transform:translateY(0)}30%{opacity:1;transform:translateY(-3px)}}
 
-  .welcome{align-self:center;text-align:center;padding:26px 10px 6px}
-  .welcome .wt{font-family:var(--display);font-weight:700;font-size:19px;color:var(--navy);margin-bottom:6px}
-  .welcome p{font-size:13.5px;color:var(--ink-soft);max-width:440px}
+  /* KroWork-style composer */
+  .composer-wrap{padding:10px 20px 16px}
+  .composer{max-width:820px;margin:0 auto;background:#fff;border:1.5px solid var(--line);border-radius:22px;box-shadow:0 16px 50px rgba(10,20,64,.1);padding:14px 16px 10px}
+  .composer:focus-within{border-color:var(--royal)}
+  .composer input{width:100%;border:none;outline:none;font-family:var(--body);font-size:15px;color:var(--ink);background:transparent;padding:2px 4px 12px}
+  .composer input::placeholder{color:#9AA3C4}
+  .comp-row{display:flex;align-items:center;gap:8px;border-top:1px solid var(--line);padding-top:10px}
+  .comp-chip{display:flex;align-items:center;gap:6px;border:1.5px solid var(--line);background:#fff;color:var(--ink-soft);font-weight:700;font-size:12px;border-radius:999px;padding:7px 13px;cursor:pointer}
+  .comp-chip:hover{border-color:var(--royal);color:var(--royal-deep)}
+  .comp-tag{margin-left:2px;font-size:11.5px;font-weight:700;color:var(--ink-soft);background:var(--blue-050);border-radius:999px;padding:6px 12px}
+  .sendbtn{margin-left:auto;background:var(--royal);color:#fff;border:none;border-radius:50%;width:44px;height:44px;cursor:pointer;font-size:17px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .sendbtn:hover{background:var(--royal-deep)}
+  .sendbtn:disabled{opacity:.45;cursor:default}
+  .disclaimer{max-width:820px;margin:8px auto 0;text-align:center;font-size:10.5px;color:var(--ink-soft)}
+  .err{max-width:820px;margin:8px auto 0;background:#FDECEA;color:#B03A2E;border-radius:10px;padding:9px 14px;font-size:12.5px;display:none;text-align:center}
 
-  .chips{display:flex;flex-wrap:wrap;gap:9px;justify-content:center;padding:6px 18px 16px;border-top:1px dashed var(--line);background:#fff}
-  .chips button{border:1.5px solid var(--blue-200);background:var(--blue-050);color:var(--royal-deep);font-family:var(--body);font-weight:700;font-size:12.5px;border-radius:999px;padding:8px 15px;cursor:pointer;transition:all .15s}
-  .chips button:hover{background:var(--royal);border-color:var(--royal);color:#fff}
-  .chips .lbl{width:100%;text-align:center;font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);padding-top:12px}
+  /* ================= RIGHT RAIL ================= */
+  .rail{width:300px;flex-shrink:0;border-left:1px solid var(--line);background:#fff;overflow-y:auto;padding:18px 16px;display:flex;flex-direction:column;gap:14px}
+  .rail::-webkit-scrollbar{width:6px}
+  .rail::-webkit-scrollbar-thumb{background:var(--blue-200);border-radius:6px}
+  .rcard{background:var(--blue-050);border:1px solid var(--blue-100);border-radius:16px;padding:18px}
+  .rcard .rk{font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--royal);margin-bottom:10px}
+  .rbtn{display:flex;align-items:center;gap:9px;width:100%;background:#fff;border:1.5px solid var(--blue-200);border-radius:11px;padding:10px 13px;font-weight:700;font-size:13px;color:var(--ink);cursor:pointer;text-decoration:none;margin-bottom:8px;transition:all .15s}
+  .rbtn:hover{border-color:var(--royal);color:var(--royal-deep)}
+  .rbtn:last-child{margin-bottom:0}
+  .rcard.tip{background:#fff;border:1px solid var(--line)}
+  .rcard.tip .tip-title{font-family:var(--display);font-weight:700;font-size:15.5px;color:var(--navy);margin-bottom:6px;line-height:1.3}
+  .rcard.tip p{font-size:12.5px;color:var(--ink-soft);line-height:1.6}
+  .rcard.tip p b{color:var(--navy)}
+  .rcard.tip .tbtn{display:inline-block;margin-top:12px}
+  .rtrust{font-size:11px;color:var(--ink-soft);line-height:1.6;padding:0 4px}
+  .rtrust b{color:var(--navy)}
+  @media(max-width:1180px){.rail{display:none}}
 
-  .keybar{display:none;gap:10px;padding:12px 16px;border-top:1px solid var(--line);background:var(--blue-050);align-items:center;flex-wrap:wrap}
-  .keybar.show{display:flex}
-  .keybar .ktxt{font-size:12.5px;color:var(--ink-soft);flex:1 1 100%;line-height:1.5}
-  .keybar .ktxt a{color:var(--royal);font-weight:700}
-  .keybar input{flex:1;min-width:200px;border:1.5px solid var(--blue-200);border-radius:10px;padding:10px 14px;font-family:var(--body);font-size:13px;outline:none;background:#fff}
-  .keybar input:focus{border-color:var(--royal)}
-  .keybar button{background:var(--royal);color:#fff;border:none;border-radius:10px;padding:10px 18px;font-family:var(--body);font-weight:700;font-size:13px;cursor:pointer}
-  .composer{display:flex;gap:10px;padding:14px 16px;border-top:1px solid var(--line);background:#fff}
-  .composer input{flex:1;border:1.5px solid var(--line);border-radius:14px;padding:14px 18px;font-family:var(--body);font-size:14.5px;outline:none;background:var(--blue-050)}
-  .composer input:focus{border-color:var(--royal);background:#fff}
-  .composer button{background:var(--royal);color:#fff;border:none;border-radius:14px;width:52px;cursor:pointer;font-size:19px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .15s}
-  .composer button:hover{background:var(--royal-deep)}
-  .composer button:disabled{opacity:.45;cursor:default}
-  .err{max-width:860px;margin:12px auto 0;background:#FDECEA;color:#B03A2E;border-radius:12px;padding:11px 16px;font-size:13px;display:none}
-
-  /* ---------- Capabilities ---------- */
-  section{padding:78px 0}
-  .center{text-align:center}
-  .center p.sub{color:var(--ink-soft);max-width:560px;margin:0 auto}
-  h2{font-size:clamp(27px,4vw,38px);margin:10px 0 14px}
-  .cap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:42px}
-  @media(max-width:900px){.cap-grid{grid-template-columns:repeat(2,1fr)}}
-  @media(max-width:560px){.cap-grid{grid-template-columns:1fr}}
-  .cap{background:#fff;border:1px solid var(--line);border-radius:16px;padding:26px 24px;transition:box-shadow .2s,transform .2s;position:relative;overflow:hidden}
-  .cap:hover{box-shadow:0 18px 44px rgba(10,20,64,.10);transform:translateY(-3px)}
-  .cap::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--royal),#5B7CFF)}
-  .cap .ic{width:42px;height:42px;border-radius:11px;background:var(--blue-050);border:1px solid var(--blue-100);display:flex;align-items:center;justify-content:center;margin-bottom:15px}
-  .cap .ic svg{width:21px;height:21px;stroke:var(--royal);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-  .cap h3{font-size:17px;margin-bottom:7px}
-  .cap p{font-size:13.8px;color:var(--ink-soft)}
-
-  /* ---------- For agents band ---------- */
-  .band{background:linear-gradient(135deg,var(--royal-deep),var(--royal));border-radius:24px;padding:52px 48px;color:#fff;display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center;position:relative;overflow:hidden}
-  .band::after{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.16) 1px,transparent 1px);background-size:22px 22px;pointer-events:none}
-  @media(max-width:820px){.band{grid-template-columns:1fr;padding:36px 26px}}
-  .band h2{color:#fff}
-  .band p{color:rgba(255,255,255,.82);font-size:15px}
-  .band .eyebrow{color:var(--gold)}
-  .band ul{list-style:none;margin-top:18px;position:relative;z-index:1}
-  .band li{padding:7px 0 7px 30px;position:relative;font-size:14.5px;color:rgba(255,255,255,.92)}
-  .band li::before{content:"✓";position:absolute;left:0;top:7px;width:20px;height:20px;border-radius:50%;background:var(--gold);color:var(--navy);font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center}
-  .band .cta-box{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);border-radius:16px;padding:28px;text-align:center;position:relative;z-index:1}
-  .band .cta-box .big{font-family:var(--display);font-size:30px;font-weight:700}
-  .band .cta-box .sm{font-size:13px;color:rgba(255,255,255,.75);margin:6px 0 18px}
-  .band .btn-royal{background:var(--gold);color:var(--navy);box-shadow:0 10px 26px rgba(0,0,0,.25)}
-
-  /* ---------- NRI section ---------- */
-  .nri-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:34px;align-items:center;background:#fff;border:2px solid var(--royal);border-radius:24px;padding:44px 46px;position:relative;overflow:hidden}
-  .nri-grid::before{content:"";position:absolute;top:0;right:0;width:260px;height:260px;background:radial-gradient(circle at top right, var(--blue-100), transparent 70%);pointer-events:none}
-  @media(max-width:820px){.nri-grid{grid-template-columns:1fr;padding:30px 24px}}
-  .nri-grid h2{margin-top:8px}
-  .nri-grid p.big{color:var(--ink-soft);font-size:15.5px}
-  .nri-list{list-style:none;margin-top:16px}
-  .nri-list li{padding:7px 0 7px 30px;position:relative;font-size:14.5px;color:var(--ink)}
-  .nri-list li::before{content:"✓";position:absolute;left:0;top:7px;width:20px;height:20px;border-radius:50%;background:var(--royal);color:#fff;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center}
-  .nri-side{background:var(--blue-050);border:1px solid var(--blue-100);border-radius:16px;padding:26px;position:relative;z-index:1}
-  .nri-side .kicker{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--royal)}
-  .nri-side .ttl{font-family:var(--display);font-size:22px;font-weight:700;color:var(--navy);margin:6px 0 8px}
-  .nri-side p{font-size:13.5px;color:var(--ink-soft);margin-bottom:18px}
-  .nri-side .btn{width:100%;justify-content:center}
-  /* ---------- Callback modal ---------- */
+  /* ================= Modals (callback + promo) ================= */
   .cb-overlay{position:fixed;inset:0;background:rgba(10,20,64,.45);backdrop-filter:blur(3px);display:none;align-items:center;justify-content:center;z-index:100;padding:20px}
   .cb-overlay.show{display:flex}
-  .cb-card{background:#fff;border-radius:20px;max-width:440px;width:100%;padding:30px 28px;box-shadow:0 30px 80px rgba(10,20,64,.3);position:relative}
+  .cb-card{background:#fff;border-radius:20px;max-width:440px;width:100%;padding:30px 28px;box-shadow:0 30px 80px rgba(10,20,64,.3);position:relative;max-height:92vh;overflow-y:auto}
   .cb-card h3{font-family:var(--display);font-size:22px;color:var(--navy);margin-bottom:4px}
-  .cb-card .cb-sub{font-size:13.5px;color:var(--ink-soft);margin-bottom:18px}
+  .cb-card .cb-sub{font-size:13.5px;color:var(--ink-soft);margin-bottom:16px}
   .cb-card label{display:block;font-size:12.5px;font-weight:800;color:var(--navy);margin:12px 0 5px}
   .cb-card input,.cb-card textarea{width:100%;border:1.5px solid var(--line);border-radius:10px;padding:11px 14px;font-family:var(--body);font-size:14px;outline:none;background:var(--blue-050)}
   .cb-card input:focus,.cb-card textarea:focus{border-color:var(--royal);background:#fff}
   .cb-card textarea{resize:vertical;min-height:70px}
-  .cb-consent{font-size:11.5px;color:var(--ink-soft);margin:12px 0 16px;line-height:1.5}
-  .cb-card .btn{width:100%;justify-content:center}
-  .cb-close{position:absolute;top:14px;right:16px;background:none;border:none;font-size:22px;color:var(--ink-soft);cursor:pointer;line-height:1}
+  .cb-consent{font-size:11.5px;color:var(--ink-soft);margin:12px 0 14px;line-height:1.5}
+  .cbtn{width:100%;background:var(--royal);color:#fff;border:none;border-radius:12px;padding:13px;font-weight:800;font-size:14.5px;cursor:pointer}
+  .cbtn:hover{background:var(--royal-deep)}
+  .cb-close{position:absolute;top:12px;right:16px;background:none;border:none;font-size:22px;color:var(--ink-soft);cursor:pointer;line-height:1}
   .cb-msg{margin-top:12px;font-size:13px;font-weight:700;display:none}
   .cb-msg.ok{color:#0E7A3C;display:block}
   .cb-msg.bad{color:#B03A2E;display:block}
-  footer{border-top:1px solid var(--line);padding:32px 0;background:#fff}
-  .foot-in{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:13px;color:var(--ink-soft)}
-  .foot-in b{color:var(--navy)}
 
+  .promo-overlay{position:fixed;inset:0;background:rgba(10,20,64,.5);backdrop-filter:blur(3px);display:none;align-items:center;justify-content:center;z-index:90;padding:20px;opacity:0;transition:opacity .3s}
+  .promo-overlay.show{display:flex;opacity:1}
+  .promo-card{background:#fff;border-radius:22px;max-width:430px;width:100%;padding:34px 30px 26px;box-shadow:0 34px 90px rgba(10,20,64,.35);position:relative;text-align:center;border-top:5px solid var(--royal);transform:translateY(14px);transition:transform .3s}
+  .promo-overlay.show .promo-card{transform:translateY(0)}
+  .promo-tag{display:inline-block;font-size:10.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--royal);background:var(--blue-050);border:1px solid var(--blue-200);border-radius:999px;padding:5px 14px;margin-bottom:14px}
+  .promo-title{font-family:var(--display);font-size:23px;font-weight:700;color:var(--navy);line-height:1.25;margin-bottom:10px}
+  .promo-text{font-size:14.5px;color:var(--ink-soft);line-height:1.65;margin-bottom:20px}
+  .promo-text b{color:var(--navy)}
+  .promo-cta{display:block;width:100%;background:var(--royal);color:#fff;border:none;border-radius:12px;padding:13px;font-weight:800;font-size:14.5px;cursor:pointer}
+  .promo-cta:hover{background:var(--royal-deep)}
+  .promo-skip{display:inline-block;margin-top:12px;font-size:12.5px;font-weight:700;color:var(--ink-soft);cursor:pointer;background:none;border:none}
+  .promo-skip:hover{color:var(--royal)}
+  .promo-close{position:absolute;top:12px;right:16px;background:none;border:none;font-size:24px;color:var(--ink-soft);cursor:pointer;line-height:1}
+
+  /* ================= Mobile ================= */
+  .scrim{position:fixed;inset:0;background:rgba(10,20,64,.35);z-index:70;display:none}
+  .scrim.show{display:block}
+  @media(max-width:900px){
+    .side{position:fixed;left:0;top:0;bottom:0;width:280px;z-index:80;transform:translateX(-100%);transition:transform .25s;box-shadow:20px 0 60px rgba(10,20,64,.18)}
+    .side.open{transform:translateX(0)}
+    .burger{display:block}
+  }
   @media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
+<div class="app">
 
-<nav>
-  <div class="wrap nav-in">
-    <a class="logo" href="#"><span class="mark">B</span>Barakah<em> AI</em></a>
-    <div class="nav-links">
-      <a href="#agent">Try the agent</a>
-      <a href="#capabilities">Capabilities</a>
-      <a href="#nri">For NRIs</a>
-      <a href="#agents">For agents</a>
-      <a href="#agent" class="btn btn-royal">Chat with Barakah</a>
+  <!-- ============ LEFT SIDEBAR ============ -->
+  <aside class="side" id="side">
+    <div class="side-top">
+      <div class="brand"><span class="mark">B</span>Barakah<em>&nbsp;AI</em></div>
+      <button class="newchat" id="newChat">✏️ &nbsp;New chat</button>
     </div>
-  </div>
-</nav>
+    <div class="hist" id="hist"></div>
+    <div class="side-bottom">
+      <div class="side-note">Barakah Properties · Hyderabad<br>Guidance only — verify documents with a registered professional. <a href="/privacy.html">Privacy</a></div>
+    </div>
+  </aside>
+  <div class="scrim" id="scrim"></div>
 
-<header class="hero" id="agent">
-  <div class="wrap">
-    <span class="eyebrow">India's AI real estate agent</span>
-    <h1>One AI agent for <span>everything</span> in real estate.</h1>
-    <p>Find the right property, check your EMI, understand documents, compare areas, or sell smarter — Barakah handles it in one conversation. Built for Hyderabad &amp; Telangana.</p>
-    <div class="lang-line">తెలుగు · हिंदी · English · Hyderabadi mix — type any way you like</div>
+  <!-- ============ MAIN ============ -->
+  <main class="main">
+    <div class="topbar">
+      <button class="burger" id="burger" aria-label="Menu">☰</button>
+      <div class="tname"><span class="dot"></span>&nbsp;Barakah — AI real estate agent</div>
+      <div class="actions">
+        <a class="tbtn hide-m" href="https://wa.me/919100109908" target="_blank" rel="noopener">WhatsApp</a>
+        <button class="tbtn solid" id="cbTop">Get a callback</button>
+      </div>
+    </div>
 
-    <div class="console">
-      <div class="console-head">
-        <div class="orb" aria-hidden="true"></div>
-        <div>
-          <div class="nm">Barakah</div>
-          <div class="st">AI real estate agent · online</div>
+    <div class="chatzone" id="chatzone">
+      <div class="welcome" id="welcome">
+        <div class="biglogo"><span class="mark">B</span>Barakah<em>&nbsp;AI</em></div>
+        <div class="tag">Hyderabad property ka har sawaal — budget, area, EMI, documents, NRI care — poochhiye, seedha jawab paiye.</div>
+        <div class="langs">తెలుగు · हिंदी · English · Hyderabadi mix — type any way you like</div>
+        <div class="chips" id="chipsWelcome">
+          <button data-t="Find me a 2BHK in Kondapur under 90 lakhs">🏠 2BHK in Kondapur</button>
+          <button data-t="Calculate EMI for 60 lakh loan, 20 years, 8.5% interest">🧮 Calculate my EMI</button>
+          <button data-t="Gachibowli vs Kompally — which area is better for investment?">📍 Compare two areas</button>
+          <button data-t="What documents should I check before buying a flat in Hyderabad?">📄 Documents checklist</button>
+          <button data-t="I saw an ad for a real estate project on Google/Facebook and want to verify it before visiting. Help me check it.">🔍 Check an ad I saw</button>
+          <button data-t="I'm an NRI living abroad and want to buy a flat in Hyderabad. What should I know and be careful about?">🌍 NRI buying from abroad</button>
+          <button data-t="I want to sell my flat in Miyapur, how should I price it?">💰 Help me sell</button>
         </div>
-        <div class="right"><button class="reset-btn" id="reset">↺ New chat</button></div>
       </div>
+      <div class="msgs" id="msgs"></div>
+    </div>
 
-      <div class="stream" id="stream">
-        <div class="welcome" id="welcome">
-          <div class="wt">Adaab! I'm Barakah 👋</div>
-          <p>Ask me anything about buying, selling, renting or investing in Hyderabad real estate — or pick a task below to see what I can do.</p>
+    <div class="composer-wrap">
+      <div class="err" id="err"></div>
+      <div class="composer">
+        <input id="inp" type="text" placeholder="Ask Barakah anything about Hyderabad real estate…" autocomplete="off" aria-label="Message Barakah">
+        <div class="comp-row">
+          <button class="comp-chip" id="cbComp">📋 Callback</button>
+          <a class="comp-chip" href="https://wa.me/919100109908" target="_blank" rel="noopener" style="text-decoration:none">📞 Human agent</a>
+          <span class="comp-tag">Barakah · Standard 🏠</span>
+          <button class="sendbtn" id="send" aria-label="Send">➤</button>
         </div>
       </div>
-
-      <div class="chips" id="chips">
-        <div class="lbl">Try one of these</div>
-        <button data-t="Find me a 2BHK in Kondapur under 90 lakhs">🏠 Find a 2BHK in Kondapur</button>
-        <button data-t="Calculate EMI for 60 lakh loan, 20 years, 8.5% interest">🧮 Calculate my EMI</button>
-        <button data-t="Gachibowli vs Kompally — which area is better for investment?">📍 Compare two areas</button>
-        <button data-t="What documents should I check before buying a flat in Hyderabad?">📄 Documents checklist</button>
-        <button data-t="I want to sell my flat in Miyapur, how should I price it?">💰 Help me sell</button>
-        <button data-t="I saw an ad for a real estate project on Google/Facebook and want to verify it before visiting. Help me check it.">🔍 Check an ad I saw</button>
-        <button data-t="I'm an NRI living abroad and want to buy a flat in Hyderabad. What should I know and be careful about?">🌍 NRI buying from abroad</button>
-        <button data-wa="1">📞 Talk to a human agent</button>
-        <button data-cb="1">📋 Request a callback</button>
-      </div>
-            <div class="composer">
-        <input id="inp" type="text" placeholder="Ask Barakah anything about real estate…" autocomplete="off" aria-label="Message Barakah">
-        <button id="send" aria-label="Send message">➤</button>
-      </div>
+      <div class="disclaimer">Barakah AI can make mistakes — always verify property documents with a registered professional.</div>
     </div>
-    <div class="err" id="err"></div>
-  </div>
-</header>
+  </main>
 
-<section id="capabilities">
-  <div class="wrap">
-    <div class="center">
-      <span class="eyebrow">Capabilities</span>
-      <h2>What Barakah can do today.</h2>
-      <p class="sub">Not a chatbot with canned answers — an agent that reasons through your situation and gives you a straight, useful response.</p>
+  <!-- ============ RIGHT RAIL ============ -->
+  <aside class="rail">
+    <div class="rcard">
+      <div class="rk">Quick actions</div>
+      <button class="rbtn" id="cbRail">📋 &nbsp;Request a callback</button>
+      <a class="rbtn" href="https://wa.me/919100109908?text=Hi%2C%20I%20came%20from%20Barakah%20AI" target="_blank" rel="noopener">📞 &nbsp;Talk to a human agent</a>
+      <button class="rbtn" id="nriRail">🌍 &nbsp;NRI Property Care</button>
     </div>
-    <div class="cap-grid">
-      <div class="cap">
-        <div class="ic"><svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg></div>
-        <h3>Property discovery</h3>
-        <p>Tell it your budget, family size and preferred area in plain language — it matches listings and explains why each one fits or doesn't.</p>
-      </div>
-      <div class="cap">
-        <div class="ic"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7h8M8 11h8M8 15h4"/></svg></div>
-        <h3>EMI &amp; loan math</h3>
-        <p>Instant EMI calculations, eligibility estimates, and honest talk about what a ₹75L flat really costs per month with registration and interiors.</p>
-      </div>
-      <div class="cap">
-        <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 22s7-4.5 7-11a7 7 0 1 0-14 0c0 6.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
-        <h3>Area intelligence</h3>
-        <p>Gachibowli vs Kompally? Uppal vs LB Nagar? Get balanced comparisons on connectivity, growth, rental yield and lifestyle fit.</p>
-      </div>
-      <div class="cap">
-        <div class="ic"><svg viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M9 14l2 2 4-4"/></svg></div>
-        <h3>Document guidance</h3>
-        <p>Understand EC, sale deed, link documents, mutation, RERA registration and HMDA/DTCP approvals in simple words — and what to verify before paying.</p>
-      </div>
-      <div class="cap">
-        <div class="ic"><svg viewBox="0 0 24 24"><path d="M4 19V5M4 19h16M8 15v-4M12 15V8M16 15v-7"/></svg></div>
-        <h3>Seller &amp; pricing help</h3>
-        <p>Thinking of selling? Barakah walks you through pricing factors, what improves value, and how to present your property to serious buyers.</p>
-      </div>
-      <div class="cap">
-        <div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3.5 9h17M3.5 15h17M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></svg></div>
-        <h3>Your language</h3>
-        <p>Telugu, Hindi, Urdu-flavoured Hyderabadi or English — Barakah mirrors how you type, including mixed language, so nothing gets lost.</p>
-      </div>
+    <div class="rcard tip" id="tipCard">
+      <div class="rk">Market insight</div>
+      <div class="tip-title" id="tipTitle"></div>
+      <p id="tipText"></p>
     </div>
-  </div>
-</section>
+    <div class="rtrust"><b>Why Barakah?</b><br>AI ki raftaar + insaani bharosa. Har jawab mein wo baat jo koi agent nahi batata — hidden costs, documents, risks. Aur zaroorat par asli team ka call.</div>
+  </aside>
+</div>
 
-
-<section id="nri" style="padding-top:0">
-  <div class="wrap">
-    <div class="nri-grid">
-      <div>
-        <span class="eyebrow">For NRIs · US · Gulf · everywhere</span>
-        <h2>Buying in Hyderabad while living abroad?</h2>
-        <p class="big">You can't visit every site. You worry about documents being genuine, relatives managing things halfway, and rules you half-remember. Barakah was built for exactly this.</p>
-        <ul class="nri-list">
-          <li>What NRIs can and cannot buy under FEMA — before you shortlist</li>
-          <li>NRE/NRO funding, NRI home loans, and TDS explained simply</li>
-          <li>Power of Attorney route when you can't fly down for registration</li>
-          <li>Video site-visit and document-verification checklists</li>
-          <li>Fraud-prevention rules: what to verify before sending any advance</li>
-        </ul>
-      </div>
-      <div class="nri-side">
-        <div class="kicker">Early access</div>
-        <div class="ttl">NRI Property Concierge</div>
-        <p>End-to-end guided buying with a human + AI team: shortlisting, video visits, advocate title check, registration support — managed for you in your timezone.</p>
-        <a class="btn btn-royal" href="https://wa.me/919100109908?text=Hi%2C%20I%27m%20an%20NRI%20interested%20in%20the%20Barakah%20Property%20Concierge" target="_blank" rel="noopener">Enquire on WhatsApp</a>
-        <p style="text-align:center;margin-top:10px;font-size:13px"><a href="#" onclick="openCb();return false" style="color:var(--royal);font-weight:700">or request a callback →</a></p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="agents" style="padding-top:0">
-  <div class="wrap">
-    <div class="band">
-      <div>
-        <span class="eyebrow">For real estate agents &amp; agencies</span>
-        <h2>Put Barakah to work on your leads.</h2>
-        <p>The same agent you just tried can run on your WhatsApp Business number — answering every ad enquiry in seconds, qualifying budget, area and timeline, filtering junk, and booking site visits into your calendar.</p>
-        <ul>
-          <li>Replies to every lead within 10 seconds, day or night</li>
-          <li>Qualifies in Telugu, Hindi and English automatically</li>
-          <li>Flags fake leads and brokers before you waste a call</li>
-          <li>Sends you a daily "call these first" priority list</li>
-        </ul>
-      </div>
-      <div class="cta-box">
-        <div class="big">First 25 agents</div>
-        <div class="sm">Hyderabad early access · setup done for you · 9-day free trial</div>
-        <a class="btn btn-royal" href="https://wa.me/919100109908?text=Hi%2C%20I%20want%20Barakah%20AI%20for%20my%20real%20estate%20leads" target="_blank" rel="noopener">Get early access on WhatsApp</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-
+<!-- Callback modal -->
 <div class="cb-overlay" id="cbOverlay" role="dialog" aria-modal="true" aria-labelledby="cbTitle">
   <div class="cb-card">
     <button class="cb-close" id="cbClose" aria-label="Close">×</button>
@@ -350,150 +252,267 @@
     <label for="cbReq">What are you looking for?</label>
     <textarea id="cbReq" maxlength="1000" placeholder="e.g. 2BHK near Kondapur, budget 80–90L, need in 3 months"></textarea>
     <div class="cb-consent">By submitting, you agree to be contacted about your property requirement (see our <a href="/privacy.html" style="color:var(--royal);font-weight:700">privacy policy</a>). We never ask for Aadhaar, PAN, OTPs or bank details.</div>
-    <button class="btn btn-royal" id="cbSubmit">Request callback</button>
+    <button class="cbtn" id="cbSubmit">Request callback</button>
     <div class="cb-msg" id="cbMsg"></div>
   </div>
 </div>
 
-<footer>
-  <div class="wrap foot-in">
-    <span><b>Barakah AI</b> — AI agent for the real estate market. Hyderabad, Telangana.</span>
-    <span>info@barakahproperties.com · +91 91001 09908 · <a href="/privacy.html" style="color:var(--royal);font-weight:700">Privacy</a> · Guidance only — always verify documents with a registered professional.</span>
+<!-- Promo popup -->
+<div class="promo-overlay" id="promoOverlay" role="dialog" aria-modal="true">
+  <div class="promo-card">
+    <button class="promo-close" id="promoClose" aria-label="Close">×</button>
+    <div class="promo-tag" id="promoTag"></div>
+    <div class="promo-title" id="promoTitle"></div>
+    <div class="promo-text" id="promoText"></div>
+    <button class="promo-cta" id="promoCta">CTA</button>
+    <button class="promo-skip" id="promoSkip">Not now, continue browsing</button>
   </div>
-</footer>
+</div>
 
 <script>
-let history = [];
-let busy = false;
-const stream = document.getElementById('stream');
-const inp = document.getElementById('inp');
-const sendBtn = document.getElementById('send');
-const errBox = document.getElementById('err');
-const welcome = document.getElementById('welcome');
-const MAX_TURNS = 30; // per-session cap to protect your API costs
+/* Safe storage (live site par history save; preview mein bina crash degrade) */
+var store={ get:function(k){try{return JSON.parse(window.localStorage.getItem(k));}catch(e){return null;}},
+            set:function(k,v){try{window.localStorage.setItem(k,JSON.stringify(v));}catch(e){}} };
+
+var convos=store.get('barakah_convos')||[]; var activeId=null; var busy=false; var MAX_TURNS=30;
+var msgsEl=document.getElementById('msgs'), welcomeEl=document.getElementById('welcome');
+var histEl=document.getElementById('hist'), chatzone=document.getElementById('chatzone');
+var inp=document.getElementById('inp'), sendBtn=document.getElementById('send'), errBox=document.getElementById('err');
+
+function saveConvos(){ store.set('barakah_convos', convos.slice(0,50)); }
+function activeConvo(){ for(var i=0;i<convos.length;i++){ if(convos[i].id===activeId) return convos[i]; } return null; }
 
 function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
 function renderLite(text){
-  let t = esc(text);
-  t = t.replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>');
-  const lines = t.split('\n');
-  let html = '', inList = false;
-  for(const ln of lines){
-    if(/^\s*[-\u2022]\s+/.test(ln)){
-      if(!inList){ html += '<ul>'; inList = true; }
-      html += '<li>' + ln.replace(/^\s*[-\u2022]\s+/,'') + '</li>';
-    } else {
-      if(inList){ html += '</ul>'; inList = false; }
-      if(ln.trim()) html += ln + '<br>';
-    }
-  }
-  if(inList) html += '</ul>';
+  var t=esc(text); t=t.replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>');
+  var lines=t.split('\n'); var html='',inList=false;
+  for(var i=0;i<lines.length;i++){var ln=lines[i];
+    if(/^\s*[-\u2022]\s+/.test(ln)){ if(!inList){html+='<ul>';inList=true;} html+='<li>'+ln.replace(/^\s*[-\u2022]\s+/,'')+'</li>'; }
+    else { if(inList){html+='</ul>';inList=false;} if(ln.trim()) html+=ln+'<br>'; } }
+  if(inList) html+='</ul>';
   return html.replace(/(<br>)+$/,'');
 }
-function addBubble(html, cls){
-  const d = document.createElement('div');
-  d.className = 'bubble ' + cls;
-  if(cls === 'user' || cls === 'sys'){ d.textContent = html; } else { d.innerHTML = html; }
-  stream.appendChild(d);
-  stream.scrollTop = stream.scrollHeight;
+function addBubble(content,cls){
+  var d=document.createElement('div'); d.className='bubble '+cls;
+  if(cls==='bot'){d.innerHTML=renderLite(content);}else{d.textContent=content;}
+  msgsEl.appendChild(d); chatzone.scrollTop=chatzone.scrollHeight; return d;
 }
-function showTyping(){
-  const t = document.createElement('div'); t.className='typing'; t.id='typing';
-  t.innerHTML='<i></i><i></i><i></i>';
-  stream.appendChild(t); stream.scrollTop = stream.scrollHeight;
+function showTyping(){var t=document.createElement('div');t.className='typing';t.id='typing';t.innerHTML='<i></i><i></i><i></i>';msgsEl.appendChild(t);chatzone.scrollTop=chatzone.scrollHeight;}
+function hideTyping(){var t=document.getElementById('typing');if(t)t.remove();}
+function showWelcome(on){ welcomeEl.style.display=on?'flex':'none'; msgsEl.style.display=on?'none':'flex'; }
+function renderConversation(){
+  msgsEl.innerHTML=''; var c=activeConvo();
+  if(!c||c.msgs.length===0){ showWelcome(true); return; }
+  showWelcome(false);
+  for(var i=0;i<c.msgs.length;i++){ var m=c.msgs[i]; addBubble(m.content, m.role==='user'?'user':'bot'); }
 }
-function hideTyping(){ const t=document.getElementById('typing'); if(t) t.remove(); }
+function renderHistory(){
+  histEl.innerHTML='';
+  if(convos.length===0){ histEl.innerHTML='<div class="empty">Aapki searches yahan dikhengi — pehla sawaal poochhiye! 👇</div>'; return; }
+  var g=document.createElement('div'); g.className='grp'; g.textContent='Recent'; histEl.appendChild(g);
+  convos.forEach(function(c){
+    var it=document.createElement('div'); it.className='hitem'+(c.id===activeId?' active':'');
+    var sp=document.createElement('span'); sp.className='tt'; sp.textContent='💬 '+(c.title||'New chat');
+    var del=document.createElement('button'); del.className='del'; del.textContent='🗑'; del.title='Delete';
+    del.addEventListener('click',function(e){ e.stopPropagation();
+      convos=convos.filter(function(x){return x.id!==c.id;});
+      if(activeId===c.id){activeId=null;renderConversation();}
+      saveConvos(); renderHistory(); });
+    it.appendChild(sp); it.appendChild(del);
+    it.addEventListener('click',function(){ activeId=c.id; renderConversation(); renderHistory(); closeSide(); });
+    histEl.appendChild(it);
+  });
+}
+function newChat(){ activeId=null; renderConversation(); renderHistory(); inp.focus(); closeSide(); }
+document.getElementById('newChat').addEventListener('click',newChat);
 
 async function send(text){
-  if(busy || !text.trim()) return;
-  if(history.length >= MAX_TURNS * 2){
-    errBox.textContent = 'This demo chat has reached its limit. Start a new chat to continue.';
-    errBox.style.display = 'block';
-    return;
-  }
-  busy = true; sendBtn.disabled = true; errBox.style.display='none';
-  if(welcome) welcome.style.display = 'none';
-  addBubble(text, 'user');
-  inp.value = '';
-  history.push({ role:'user', content: text });
-  showTyping();
+  if(busy||!text.trim())return;
+  var c=activeConvo();
+  if(!c){ c={id:'c'+Date.now(),title:text.trim().slice(0,42),ts:Date.now(),msgs:[]}; convos.unshift(c); activeId=c.id; }
+  if(c.msgs.length>=MAX_TURNS*2){ errBox.textContent='Ye chat limit par pahunch gayi — New chat shuru kariye.'; errBox.style.display='block'; return; }
+  busy=true; sendBtn.disabled=true; errBox.style.display='none';
+  showWelcome(false); addBubble(text,'user');
+  c.msgs.push({role:'user',content:text}); saveConvos(); renderHistory();
+  inp.value=''; showTyping();
   try{
-    const res = await fetch('/api/chat',{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({ messages: history })
-    });
-    const data = await res.json();
-    if(!res.ok || data.error) throw new Error(data.error || 'request failed');
-    const raw = (data.reply || '').trim();
-    if(!raw) throw new Error('empty');
-    hideTyping();
-    addBubble(renderLite(raw), 'bot');
-    history.push({ role:'assistant', content: raw });
+    var res=await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:c.msgs})});
+    var data=await res.json();
+    if(!res.ok||data.error) throw new Error(data.error||'failed');
+    var raw=(data.reply||'').trim(); if(!raw) throw new Error('empty');
+    hideTyping(); addBubble(raw,'bot');
+    c.msgs.push({role:'assistant',content:raw}); saveConvos();
   }catch(e){
-    hideTyping();
-    history.pop();
-    errBox.textContent = 'Barakah could not respond just now — please try again in a moment.';
-    errBox.style.display = 'block';
-    addBubble('(message not delivered — try again)', 'sys');
+    hideTyping(); c.msgs.pop(); saveConvos();
+    errBox.textContent='Barakah abhi jawab nahi de paya — live site par phir bhejiye.'; errBox.style.display='block';
+    addBubble('(message not delivered — try again)','sys');
   }
-  busy = false; sendBtn.disabled = false; inp.focus();
+  busy=false; sendBtn.disabled=false; inp.focus();
 }
+sendBtn.addEventListener('click',function(){send(inp.value);});
+inp.addEventListener('keydown',function(e){if(e.key==='Enter')send(inp.value);});
+document.getElementById('chipsWelcome').addEventListener('click',function(e){var b=e.target.closest('button');if(b&&b.dataset.t)send(b.dataset.t);});
 
-sendBtn.addEventListener('click', ()=>send(inp.value));
-inp.addEventListener('keydown', e=>{ if(e.key==='Enter') send(inp.value); });
-document.getElementById('chips').addEventListener('click', e=>{
-  const b = e.target.closest('button'); if(!b) return;
-  if(b.dataset.cb){ openCb(); return; }
-  if(b.dataset.wa){
-    window.open('https://wa.me/919100109908?text=' + encodeURIComponent('Hi, I was chatting with Barakah AI and want to speak to an agent about my property requirement.'), '_blank', 'noopener');
-    return;
+/* NRI actions */
+var NRI_MSG="I'm an NRI — tell me about Barakah Property Care: rent collection, maintenance, tenant finding for my Hyderabad property.";
+document.getElementById('nriRail').addEventListener('click',function(){send(NRI_MSG);});
+
+/* Sidebar mobile */
+var side=document.getElementById('side'),scrim=document.getElementById('scrim');
+function closeSide(){side.classList.remove('open');scrim.classList.remove('show');}
+document.getElementById('burger').addEventListener('click',function(){side.classList.add('open');scrim.classList.add('show');});
+scrim.addEventListener('click',closeSide);
+
+/* Callback modal */
+var cbOv=document.getElementById('cbOverlay'),cbMsg=document.getElementById('cbMsg');
+window.openCb=function(){cbOv.classList.add('show');cbMsg.className='cb-msg';};
+function cbClose(){cbOv.classList.remove('show');}
+document.getElementById('cbClose').addEventListener('click',cbClose);
+cbOv.addEventListener('click',function(e){if(e.target===cbOv)cbClose();});
+document.getElementById('cbTop').addEventListener('click',openCb);
+document.getElementById('cbComp').addEventListener('click',openCb);
+document.getElementById('cbRail').addEventListener('click',openCb);
+document.getElementById('cbSubmit').addEventListener('click',async function(){
+  var name=document.getElementById('cbName').value.trim();
+  var phone=document.getElementById('cbPhone').value.replace(/[^\d]/g,'').replace(/^91/,'');
+  var req=document.getElementById('cbReq').value.trim();
+  cbMsg.className='cb-msg';
+  if(name.length<2){cbMsg.textContent='Apna naam likhiye.';cbMsg.classList.add('bad');return;}
+  if(!/^[6-9]\d{9}$/.test(phone)){cbMsg.textContent='Sahi 10-digit mobile number daaliye.';cbMsg.classList.add('bad');return;}
+  try{
+    var r=await fetch('/api/lead',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:name,phone:phone,requirement:req,source:'website'})});
+    var d=await r.json(); if(!r.ok||d.error)throw new Error(d.error||'failed');
+    cbMsg.textContent='Done! Request save ho gayi — jald call aayega.';cbMsg.classList.add('ok');
+    setTimeout(cbClose,2500);
+  }catch(e){
+    var text='Callback request from Barakah AI%0AName: '+encodeURIComponent(name)+'%0APhone: '+phone+'%0ARequirement: '+encodeURIComponent(req||'-');
+    window.open('https://wa.me/919100109908?text='+text,'_blank','noopener');
+    cbMsg.textContent='Direct save unavailable — WhatsApp khol diya details ke saath.';cbMsg.classList.add('ok');
   }
-  send(b.dataset.t);
-});
-document.getElementById('reset').addEventListener('click', ()=>{
-  history = [];
-  stream.innerHTML = '';
-  const w = document.createElement('div');
-  w.className='welcome';
-  w.innerHTML = '<div class="wt">New chat started \ud83d\udc4b</div><p>Ask me anything about Hyderabad real estate.</p>';
-  stream.appendChild(w);
-  errBox.style.display='none';
 });
 
-// ---- Callback modal ----
+/* Promos: popup (random per load) + right-rail tip */
+var promos=[
+  /* ---- Company & agent ---- */
+  {tag:'Barakah Properties',title:'Hyderabad ki sabse smart property team',text:'AI ki raftaar + insaani bharosa. Buying, selling, documents, NRI care — <b>ek hi jagah, teen bhashaon mein.</b> Pehli salah bilkul FREE.',cta:'Chat with Barakah AI',act:'chat'},
+  {tag:'Meet your AI agent',title:'Barakah — 24/7 aapka property advisor',text:'Raat ke 2 baje bhi poochhiye — budget, area, EMI, documents. <b>Telugu, Hindi, English</b> — jaise chaho. Koi charge nahi.',cta:'Try the agent now',act:'chat'},
+  {tag:'Barakah Properties',title:'Portal listings dikhate hain. Hum check karte hain.',text:'Har jawab mein wo baat jo koi agent nahi batata — <b>hidden costs, missing documents, risks.</b> Yahi hamara farak hai.',cta:'Ask me anything',act:'chat'},
+  {tag:'Free consultation',title:'5 minute mein verified agent ka callback',text:'Apni requirement bataiye — budget, area, timeline — <b>hamari team khud call karegi.</b> Koi spam nahi.',cta:'Request a callback',act:'callback'},
+  {tag:'Meet your AI agent',title:'Telugu lo adagandi, Hindi mein poochhiye, ask in English',text:'Barakah <b>aapki bhasha mein</b> jawab deta hai — mixed Hyderabadi bhi chalega. Try karke dekhiye!',cta:'Start chatting',act:'chat'},
+  {tag:'Barakah Properties',title:'Ek WhatsApp door hain hum',text:'AI se jawab lijiye, aur jab human chahiye — <b>ek tap par asli team.</b> Dono duniya ka best.',cta:'Chat now',act:'chat'},
+  {tag:'Did you know?',title:'Aapki chat history save rehti hai',text:'Left sidebar dekhiye — <b>puraani searches wahin milengi.</b> Kal ka sawaal aaj continue kariye.',cta:'Chalo chat karein',act:'chat'},
+
+  /* ---- Documents & fraud prevention ---- */
+  {tag:'Fraud alert',title:'Plot lene se pehle LP number maangiye',text:'Layout Permit number + approving authority (HMDA/DTCP/GHMC) — <b>aur check kariye ki AAPKA plot approved layout ke andar hai,</b> bagal ka nahi.',cta:'Get the checklist',act:'adcheck'},
+  {tag:'Document tip',title:'EC — 30 saal ka, sirf 5 ka nahi',text:'Encumbrance Certificate batata hai property par loan/dispute hai ya nahi. <b>30 saal ka EC</b> IGRS Telangana se nikalwaiye.',cta:'Learn how',act:'chat'},
+  {tag:'Fraud alert',title:'Zameen agricultural to nahi? Dharani check kariye',text:'Agar record mein agricultural hai to <b>NALA conversion order</b> zaroori hai — bina uske ghar nahi ban sakta legally.',cta:'Ask about Dharani',act:'chat'},
+  {tag:'Document tip',title:'"Ready to move"? Pehle OC dikhaiye boliye',text:'<b>Occupancy Certificate</b> ke bina bank loan mushkil aur resale complicated. Ready flat = OC in hand.',cta:'Full checklist',act:'chat'},
+  {tag:'Buyer tip',title:'Carpet area vs Super built-up — 25% ka khel',text:'Aap paisa <b>super built-up</b> ka dete hain, rehte <b>carpet</b> mein hain. RERA carpet area mandate karta hai — wahi poochhiye.',cta:'Understand areas',act:'chat'},
+  {tag:'Document tip',title:'Link documents — 30 saal ki kahani',text:'Mother deed se aaj tak ki <b>ownership chain</b> — ek bhi kadi tooti to title risk. Advocate se zaroor check karwaiye.',cta:'What to verify',act:'chat'},
+  {tag:'Fraud alert',title:'RERA number sirf likha hona kaafi nahi',text:'rera.telangana.gov.in par khud check kariye — <b>registration, completion date, aur complaints.</b> 2 minute lagte hain.',cta:'How to check RERA',act:'adcheck'},
+  {tag:'Buyer tip',title:'Jitne floor bane hain, utne approved hain?',text:'Sanctioned building plan se milaiye — <b>extra floors = demolition risk + loan reject.</b> Poochhne mein sharam kaisi?',cta:'Ask the AI',act:'chat'},
+  {tag:'Fraud alert',title:'"Price on request" — samajh jaiye',text:'Jo daam chhupata hai, wo kuch aur bhi chhupa sakta hai. <b>Poora costing pehle maangiye</b> — hum nikalwa denge.',cta:'Get true cost',act:'chat'},
+  {tag:'Fraud alert',title:'"Aaj ka hi rate hai sir" — classic pressure',text:'Achhi property kal bhi milegi. <b>Documents check se pehle advance kabhi nahi.</b> Ye rule lakhs bachata hai.',cta:'Verification first',act:'adcheck'},
+  {tag:'Fraud alert',title:'Advance ki receipt unregistered? Ruk jaiye',text:'Kachchi receipt par diya paisa <b>legally wapas lena mushkil</b> hota hai. Agreement of sale registered karwaiye.',cta:'Safe payment steps',act:'chat'},
+  {tag:'Golden rule',title:'Advocate check < ₹5,000. Galat title = sab kuch.',text:'Har payment se pehle <b>independent advocate se title check</b> — duniya ka sabse sasta insurance.',cta:'Why it matters',act:'chat'},
+
+  /* ---- Buyer costs & process ---- */
+  {tag:'Market insight',title:'₹50L ka flat = ₹50L nahi hota!',text:'Telangana mein registration + stamps lagbhag <b>+7.5%</b> aur hote hain, under-construction par GST alag. Poora hisaab AI se poochhiye.',cta:'Calculate my real cost',act:'chat'},
+  {tag:'Hidden cost',title:'GST sirf under-construction par lagta hai',text:'<b>Ready-to-move (OC ke saath) = GST nahi.</b> Under-construction = GST extra. Ye farak lakhs ka ho sakta hai.',cta:'Compare both',act:'chat'},
+  {tag:'Hidden cost',title:'Parking, clubhouse, corpus — poochha kya?',text:'Base price ke upar <b>car parking, amenities, maintenance corpus</b> — sab alag se. Full cost sheet maangiye, surprise nahi.',cta:'Full cost list',act:'chat'},
+  {tag:'Hidden cost',title:'Interiors ka budget pehle se rakhiye',text:'Naye flat mein <b>₹3–5L+ ka interiors/move-in kharcha</b> aam hai. EMI ke saath isko bhi plan kariye.',cta:'Plan my budget',act:'chat'},
+  {tag:'Buyer tip',title:'Site visit Sunday ko? Weekday evening bhi jaiye',text:'<b>Peak traffic mein commute test kariye</b> — Sunday ki khaali road jhooth bolti hai. Office ka rasta asli test hai.',cta:'Smart visit tips',act:'chat'},
+  {tag:'Buyer tip',title:'Possession delay clause padha?',text:'Agreement mein <b>delay penalty aur exit clause</b> zaroor ho. Builder ka promise nahi, likha hua clause kaam aata hai.',cta:'What to check',act:'chat'},
+  {tag:'Buyer tip',title:'Bank-approved project = adha legal check done',text:'Bade banks jis project ko approve karte hain (APF), uska <b>basic title check ho chuka hota hai.</b> Shortcut nahi, par achha signal hai.',cta:'Tell me more',act:'chat'},
+  {tag:'Buyer tip',title:'Resale flat — society NOC aur dues check',text:'Purane flat mein <b>pending maintenance dues aapke sar aa sakte hain.</b> NOC + latest receipts maangiye.',cta:'Resale checklist',act:'chat'},
+  {tag:'Buyer tip',title:'Mutation karwana mat bhooliye',text:'Registration ke baad <b>property tax record mein naam badalna (mutation)</b> zaroori hai — warna tax notices puraane malik ke naam.',cta:'Mutation steps',act:'chat'},
+  {tag:'Market insight',title:'Naya launch sasta kyun hota hai?',text:'Under-construction discount = <b>waiting + completion risk ka daam.</b> Sasta hai to wajah hai — dono taraf samajh kar chuniye.',cta:'New vs ready',act:'chat'},
+
+  /* ---- Finance & EMI ---- */
+  {tag:'EMI wisdom',title:'₹40L loan = lagbhag ₹34,700/mahina',text:'(20 saal @8.5% approx.) Rule: <b>EMI aapki income ka 40% se zyada nahi.</b> Apna exact hisaab AI se lagwaiye.',cta:'Calculate my EMI',act:'chat'},
+  {tag:'EMI wisdom',title:'Har saal ek extra EMI = lakhs ki bachat',text:'<b>Prepayment interest ko kaat deta hai.</b> Bonus aaya? Ek EMI extra bhariye — tenure saalon chhota ho jata hai.',cta:'Prepayment math',act:'chat'},
+  {tag:'Loan tip',title:'CIBIL 750+ = sasta loan',text:'Score achha to <b>interest rate mein 0.25–0.5% ka farak</b> mil sakta hai — 20 saal mein lakhs. Pehle score sudhariye.',cta:'Improve my chances',act:'chat'},
+  {tag:'Loan tip',title:'Down payment sirf 20% nahi hota',text:'20% down + <b>7.5% registration + interiors</b> — cash plan poora banaiye, warna aakhri waqt mein daudna padta hai.',cta:'Total cash needed',act:'chat'},
+  {tag:'Loan tip',title:'Lamba tenure = chhoti EMI, bada interest',text:'30 saal ka loan aasan lagta hai, par <b>total interest kabhi-kabhi principal se zyada</b> ho jata hai. Balance poochhiye.',cta:'Find my sweet spot',act:'chat'},
+  {tag:'Loan tip',title:'Processing fee bhi negotiate hoti hai',text:'Banks ke beech <b>rate + fee dono compare</b> kariye. Ek phone call = hazaaron ki bachat.',cta:'Loan comparison tips',act:'chat'},
+  {tag:'Tax tip',title:'₹50L+ ki property? 1% TDS aapki duty hai',text:'<b>Buyer ko TDS kaat kar jama karna hota hai</b> (Sec 194-IA). Bhool gaye to penalty aapko. Exact process CA se confirm kariye.',cta:'TDS basics',act:'chat'},
+  {tag:'EMI wisdom',title:'Pre-EMI scheme — samajh kar sign kariye',text:'Possession tak sirf interest bharna aasan lagta hai, par <b>principal wahin ka wahin rehta hai.</b> Trade-off poochhiye.',cta:'Pre-EMI explained',act:'chat'},
+
+  /* ---- NRI ---- */
+  {tag:'NRI alert',title:'NRI agricultural land NAHI khareed sakte',text:'FEMA rule: residential/commercial ✅, <b>agri land, farmhouse, plantation ❌</b> (inheritance alag baat hai). Pehle ye confirm kariye.',cta:'NRI rules simplified',act:'nri'},
+  {tag:'NRI tip',title:'Payment sirf NRE/NRO se',text:'NRI property purchase <b>NRE/NRO/FCNR account ya inward remittance</b> se hi — cash ya idhar-udhar se nahi. Ye record baad mein kaam aata hai.',cta:'NRI payment rules',act:'nri'},
+  {tag:'NRI tip',title:'India nahi aa sakte? PoA se registration ho jayegi',text:'Bharosemand rishtedaar ko <b>registered Power of Attorney</b> — videsh mein banayi PoA embassy se attest karwani hoti hai.',cta:'PoA process',act:'nri'},
+  {tag:'NRI alert',title:'Photo dekh kar advance? Kabhi nahi.',text:'<b>Video site visit + independent advocate check</b> — ye do rules videsh se buying ko safe banate hain. Hum dono karwate hain.',cta:'NRI safe buying',act:'nri'},
+  {tag:'NRI alert',title:'NRI se property khareed rahe ho? TDS zyada hai',text:'NRI seller par TDS <b>Sec 195</b> ke under alag (aur zyada) lagta hai — 1% wala rule nahi. CA se rate confirm kariye, warna notice aapko.',cta:'Explain NRI TDS',act:'chat'},
+  {tag:'NRI Property Care',title:'Videsh mein aap, Hyderabad mein aapki property — tension-free',text:'Tenant, <b>rent collection, maintenance, bills</b> — sab hum sambhalte hain. Photo/video report har mahine.',cta:'Explore NRI services',act:'nri'},
+  {tag:'NRI Property Care',title:'Khaali flat = girta hua paisa',text:'Vacancy ka har mahina <b>yield kha jata hai.</b> Tenant verification se rent collection tak — Barakah Property Care sambhal lega.',cta:'Fill my flat',act:'nri'},
+  {tag:'NRI tip',title:'Sale proceeds wapas le jane ka rasta hai',text:'Repatriation <b>Form 15CA/CB</b> ke through hota hai, limits ke saath. Bechne se pehle CA se planning kariye.',cta:'Repatriation basics',act:'nri'},
+
+  /* ---- Seller ---- */
+  {tag:'Seller tip',title:'Overpricing = mahino ka intezaar',text:'Market se 10% upar rakha to <b>listing baasi ho jati hai</b> aur buyers negotiate zyada karte hain. Sahi pricing = tez deal.',cta:'Price my property',act:'chat'},
+  {tag:'Seller tip',title:'Din ki roshni mein 10 photos > 50 dark photos',text:'Saaf-suthra ghar, <b>khidkiyan khol kar, dopahar ki light</b> — photos hi pehla site visit hain.',cta:'Selling checklist',act:'chat'},
+  {tag:'Seller tip',title:'Documents ka folder pehle se ready rakhiye',text:'Sale deed, EC, tax receipts, plan copy — <b>ready folder = serious seller ka signal</b> = tez closing.',cta:'What buyers ask',act:'chat'},
+  {tag:'Seller tip',title:'Har call serious buyer nahi hota',text:'Budget, timeline, loan status — <b>pehle qualify kariye phir time dijiye.</b> Ya ye kaam Barakah ko karne dijiye. 😉',cta:'Filter my enquiries',act:'callback'},
+  {tag:'Seller tip',title:'Bechne se pehle chhoti repair = bada return',text:'<b>Seepage ka daag, toota switch, kharab tap</b> — ₹10-20k ki repair buyers ke lakhon ke bahane band kar deti hai.',cta:'Prep to sell',act:'chat'},
+
+  /* ---- Investment & rental ---- */
+  {tag:'Market insight',title:'Rental yield ka sach',text:'Hyderabad mein apartments ki rental yield aam taur par <b>2.5–4% saalana</b>. Investment se pehle yield ka hisaab lagwaiye.',cta:'Ask about my area',act:'chat'},
+  {tag:'Investor tip',title:'Real estate = 5–7 saal ka khel',text:'2 saal mein double ka sapna mat dekhiye. <b>Achhi location + sabr</b> — yahi formula har cycle mein jeeta hai.',cta:'Investment basics',act:'chat'},
+  {tag:'Investor tip',title:'Plot vs Flat — liquidity ka farak',text:'Flat <b>jaldi bikta hai, rent deta hai.</b> Plot appreciation de sakta hai par bechne mein waqt. Apna goal pehle tay kariye.',cta:'Plot ya flat?',act:'chat'},
+  {tag:'Rental tip',title:'11 mahine ka agreement kyun hota hai?',text:'12 mahine+ ka lease <b>registration maangta hai.</b> Notarized 11-month standard hai — par likha hua zaroor ho, zubaani nahi.',cta:'Rental paperwork',act:'chat'},
+  {tag:'Investor tip',title:'Vacancy bhi ek cost hai',text:'Saal mein 2 mahine khaali = <b>yield ka 17% gaya.</b> Achhe tenant ko retain karna naya dhundhne se sasta hai.',cta:'Landlord math',act:'chat'},
+  {tag:'Investor tip',title:'Announced project ≠ built project',text:'Metro/RRR/IT park ki <b>khabar par premium mat dijiye</b> — timelines badalti rehti hain. Zameen par kya hai, wahi dekh kar kharidiye.',cta:'Hype vs reality',act:'chat'},
+  {tag:'Buyer tip',title:'East facing ka premium? Pehle ventilation dekhiye',text:'Direction se zyada matter karta hai <b>cross-ventilation, natural light aur floor level.</b> Practical cheezein pehle check kariye.',cta:'Flat selection tips',act:'chat'},
+  {tag:'Market insight',title:'Metro ke 1 km andar = rent premium',text:'Metro-walkable flats ko <b>tenant jaldi milta hai aur rent behtar.</b> Investment ke liye connectivity king hai.',cta:'Metro-side options',act:'chat'},
+  {tag:'Hidden cost',title:'Property tax har saal — bhoole to penalty',text:'GHMC property tax <b>time par bhariye</b>, warna interest chadhta hai. Online 5 minute ka kaam hai — process poochhiye.',cta:'Tax basics',act:'chat'},
+  {tag:'Document tip',title:'Sale agreement ≠ Sale deed',text:'Agreement sirf <b>waada</b> hai; ownership <b>registered sale deed</b> se milti hai. Dono ka farak samajh lijiye.',cta:'Explain the difference',act:'chat'},
+  {tag:'Buyer tip',title:'Society ka maintenance kitna? Pehle poochhiye',text:'₹3–6/sft/month aam hai gated societies mein — <b>saal ka 50-80k EMI ke upar.</b> Budget mein jodiye.',cta:'Monthly cost reality',act:'chat'},
+  {tag:'Fraud alert',title:'Same plot do logon ko becha? Hota hai.',text:'<b>Latest EC nikalwa kar registration se theek pehle phir check kariye</b> — double-sale fraud isi se pakda jata hai.',cta:'Protect my money',act:'adcheck'},
+  {tag:'Investor tip',title:'Sab paisa ek hi plot mein? Soch lijiye',text:'<b>Diversification real estate mein bhi chalta hai</b> — ek bada risk se do chhote balanced better ho sakte hain. Apna case discuss kariye.',cta:'Portfolio thinking',act:'chat'},
+  {tag:'Rental tip',title:'Security deposit ki receipt aur refund terms likhwaiye',text:'Deposit kitna, <b>refund kab aur kya kaat kar</b> — agreement mein clear ho. Zubaani waade yaad nahi rehte.',cta:'Agreement checklist',act:'chat'},
+  {tag:'Rental tip',title:'Tenant verification skip mat kariye',text:'<b>ID + police verification + previous landlord se baat</b> — 30 minute ka kaam, saalon ka sukoon. Hum ye service dete hain.',cta:'Tenant screening',act:'nri'}
+];
+/* ---- Area-specific cards (20 areas x 2) = 40 more ---- */
+var AREAS=['Kondapur','Gachibowli','Kukatpally','Miyapur','Kompally','Uppal','LB Nagar','Shamshabad','Tellapur','Shadnagar','Manikonda','Nizampet','Bachupally','Pocharam','Adibatla','Attapur','Tolichowki','Alwal','Medchal','Nagole'];
+AREAS.forEach(function(a){
+  promos.push({tag:'Area insight',title:a+' mein lene ka soch rahe hain?',text:'Connectivity, growth, approximate price band, aur <b>risks bhi</b> — '+a+' ka balanced review poochhiye. Sirf taareef nahi, poora sach.',cta:a+' review do',act:'area:'+a});
+  promos.push({tag:'Rental check',title:a+' mein flat khaali hai ya lene ka plan?',text:''+a+' ka <b>approximate rent aur yield</b> jaan lijiye — aur chahen to tenant finding + rent collection hum sambhal lein.',cta:a+' rent poochho',act:'rent:'+a});
+});
 (function(){
-  const ov = document.getElementById('cbOverlay');
-  const msg = document.getElementById('cbMsg');
-  window.openCb = function(){ ov.classList.add('show'); msg.className='cb-msg'; };
-  function close(){ ov.classList.remove('show'); }
-  document.getElementById('cbClose').addEventListener('click', close);
-  ov.addEventListener('click', e=>{ if(e.target===ov) close(); });
-  document.getElementById('cbSubmit').addEventListener('click', async ()=>{
-    const name = document.getElementById('cbName').value.trim();
-    const phoneRaw = document.getElementById('cbPhone').value.replace(/[^\d]/g,'').replace(/^91/,'');
-    const req = document.getElementById('cbReq').value.trim();
-    msg.className='cb-msg';
-    if(name.length < 2){ msg.textContent='Please enter your name.'; msg.classList.add('bad'); return; }
-    if(!/^[6-9]\d{9}$/.test(phoneRaw)){ msg.textContent='Please enter a valid 10-digit mobile number.'; msg.classList.add('bad'); return; }
-    try{
-      const r = await fetch('/api/lead',{ method:'POST', headers:{'Content-Type':'application/json'},
-        body: JSON.stringify({ name:name, phone:phoneRaw, requirement:req, source:'website' }) });
-      const d = await r.json();
-      if(!r.ok || d.error) throw new Error(d.error || 'failed');
-      msg.textContent = 'Done! Your request is saved — expect a call soon.';
-      msg.classList.add('ok');
-      setTimeout(close, 2500);
-    }catch(e){
-      // Fallback: open WhatsApp with details prefilled so the lead is never lost
-      const text = 'Callback request from Barakah AI%0AName: ' + encodeURIComponent(name) + '%0APhone: ' + phoneRaw + '%0ARequirement: ' + encodeURIComponent(req || '-');
-      window.open('https://wa.me/919100109908?text=' + text, '_blank', 'noopener');
-      msg.textContent = 'Direct save unavailable here — we opened WhatsApp with your details instead.';
-      msg.classList.add('ok');
-    }
+  /* No-repeat: har card ek baar; sab dikh jayein tab reset */
+  var seen=store.get('barakah_promo_seen')||[];
+  var pool=[]; for(var i=0;i<promos.length;i++){ if(seen.indexOf(i)===-1) pool.push(i); }
+  if(pool.length===0){ seen=[]; for(var j=0;j<promos.length;j++) pool.push(j); }
+  var idx=pool[Math.floor(Math.random()*pool.length)];
+  seen.push(idx); store.set('barakah_promo_seen',seen);
+  var p=promos[idx];
+  var ov=document.getElementById('promoOverlay'); if(!ov)return;
+  document.getElementById('promoTag').textContent=p.tag;
+  document.getElementById('promoTitle').textContent=p.title;
+  document.getElementById('promoText').innerHTML=p.text;
+  var cta=document.getElementById('promoCta'); cta.textContent=p.cta;
+  function closeP(){ov.classList.remove('show');setTimeout(function(){ov.style.display='none';},300);}
+  cta.addEventListener('click',function(){closeP();
+    if(p.act==='chat'){inp.focus();}
+    else if(p.act==='adcheck'){send('I saw an ad for a real estate project and want to verify it before visiting. Help me check it.');}
+    else if(p.act==='nri'){send(NRI_MSG);}
+    else if(p.act==='callback'){openCb();}
+    else if(p.act.indexOf('area:')===0){var ar=p.act.slice(5);send('Tell me the pros and cons of buying in '+ar+', Hyderabad — approximate price band, connectivity, growth outlook, and risks.');}
+    else if(p.act.indexOf('rent:')===0){var ar2=p.act.slice(5);send('What is the approximate rent and rental yield for a 2BHK in '+ar2+', Hyderabad? Also tell me about Barakah rent collection and property care service.');}
   });
+  document.getElementById('promoClose').addEventListener('click',closeP);
+  document.getElementById('promoSkip').addEventListener('click',closeP);
+  ov.addEventListener('click',function(e){if(e.target===ov)closeP();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')closeP();});
+  setTimeout(function(){ov.style.display='flex';requestAnimationFrame(function(){ov.classList.add('show');});},1600);
+  /* right-rail tip = a different insight than the popup */
+  var others=promos.filter(function(x){return x!==p && x.tag==='Market insight';});
+  var t=others[Math.floor(Math.random()*others.length)]||promos[2];
+  document.getElementById('tipTitle').textContent=t.title;
+  document.getElementById('tipText').innerHTML=t.text;
 })();
 
+renderHistory(); renderConversation();
 </script>
 </body>
 </html>
