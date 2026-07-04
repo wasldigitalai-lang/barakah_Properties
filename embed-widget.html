@@ -1,0 +1,31 @@
+<!-- ============================================================
+  Barakah AI — Floating Chat Widget
+  Paste this snippet just before </body> on ANY website
+  (GoDaddy Builder: add an "HTML/Embed" section and paste there).
+  It shows a floating chat bubble; clicking opens Barakah AI
+  in an overlay. Change WIDGET_URL if your AI lives elsewhere.
+============================================================= -->
+<script>
+(function(){
+  var WIDGET_URL = 'https://barakahproperties.com'; // or your ai.subdomain / vercel URL
+  var btn = document.createElement('button');
+  btn.innerHTML = '&#128172; Ask Barakah';
+  btn.setAttribute('aria-label','Chat with Barakah AI');
+  btn.style.cssText = 'position:fixed;bottom:22px;right:22px;z-index:99998;background:#2244CC;color:#fff;border:none;border-radius:999px;padding:14px 22px;font:700 15px system-ui,sans-serif;box-shadow:0 10px 28px rgba(34,68,204,.4);cursor:pointer';
+  var overlay = document.createElement('div');
+  overlay.style.cssText = 'position:fixed;inset:0;background:rgba(10,20,64,.5);z-index:99999;display:none;align-items:center;justify-content:center;padding:16px';
+  var frame = document.createElement('iframe');
+  frame.src = 'about:blank';
+  frame.title = 'Barakah AI chat';
+  frame.style.cssText = 'width:100%;max-width:480px;height:min(680px,90vh);border:none;border-radius:18px;background:#fff;box-shadow:0 30px 80px rgba(0,0,0,.35)';
+  var close = document.createElement('button');
+  close.innerHTML = '&times;';
+  close.setAttribute('aria-label','Close chat');
+  close.style.cssText = 'position:absolute;top:14px;right:18px;background:#fff;border:none;border-radius:50%;width:38px;height:38px;font-size:22px;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.25)';
+  overlay.appendChild(frame); overlay.appendChild(close);
+  document.body.appendChild(btn); document.body.appendChild(overlay);
+  btn.onclick = function(){ if(frame.src==='about:blank') frame.src = WIDGET_URL; overlay.style.display='flex'; };
+  close.onclick = function(){ overlay.style.display='none'; };
+  overlay.onclick = function(e){ if(e.target===overlay) overlay.style.display='none'; };
+})();
+</script>
